@@ -13,8 +13,8 @@ public abstract class Avaliacao {
         disciplina.adicionarAvaliacao(this);
     }
 
-    public void AdicionarAlunoENota(Aluno aluno, double notaProva){
-        Nota nota = new Nota(aluno, this, notaProva);
+    public void AdicionarAlunoENota(Aluno aluno, double notaAvaliacao){ //TESTAR
+        Nota nota = new Nota(aluno, this, notaAvaliacao);
         listaAlunosENotas.add(nota);
         aluno.adicionaNota(nota);
     }

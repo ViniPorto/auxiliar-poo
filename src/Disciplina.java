@@ -7,11 +7,15 @@ public class Disciplina {
     private List<Avaliacao> listaDeAvaliacoes = new ArrayList<>();
     private List<SituacaoFinal> listaBoletim = new ArrayList<>();
     private List<Aluno> listaDeAlunos = new ArrayList<>();
+    private int codigo;
+    private static int totalDeDisciplinas = 0;
 
-    public Disciplina(String nomeDaDisciplina, double notaDeCorte, List<Aluno> listaDeAlunos){
+    public Disciplina(String nomeDaDisciplina, double notaDeCorte, List<Aluno> listaDeAlunos){ //TESTAR
         this.nomeDaDisciplina = nomeDaDisciplina;
         this.notaDeCorte = notaDeCorte;
         this.listaDeAlunos.addAll(listaDeAlunos);
+        totalDeDisciplinas++; //TESTAR
+        this.codigo = totalDeDisciplinas;
     }
 
     public List<Aluno> getListaDeAlunos(){
@@ -34,11 +38,15 @@ public class Disciplina {
         this.notaDeCorte = notaDeCorte;
     }
 
-    public void adicionarAvaliacao(Avaliacao avaliacao){
+    public int getCodigo(){
+        return codigo;
+    }
+
+    public void adicionarAvaliacao(Avaliacao avaliacao){ //TESTAR
         listaDeAvaliacoes.add(avaliacao);
     }
 
-    public double getNotaFinal(Aluno aluno){
+    public double getNotaFinal(Aluno aluno){ //TESTAR
         double somatorioNotaVezesPeso = 0, somatorioPesos = 0;
         for(Nota nota : aluno.getListaDeNotas()){
             somatorioNotaVezesPeso += (nota.getNota() * nota.getAvaliacao().getPeso());
@@ -47,14 +55,14 @@ public class Disciplina {
         return ((somatorioNotaVezesPeso / somatorioPesos) * 10.0) / 10.0;
     }
 
-    public String situacaoAluno(double notaFinal){
+    public String situacaoAluno(double notaFinal){ //TESTAR
         if(notaFinal >= notaDeCorte){
             return "Aprovado";
         }
         return "Reprovado";
     }
 
-    public void avaliarAlunos(){
+    public void avaliarAlunos(){ //TESTAR
         for(Aluno aluno : listaDeAlunos){
             SituacaoFinal situacao = new SituacaoFinal(aluno.getListaDeNotas(), this.getNotaFinal(aluno), this.situacaoAluno(this.getNotaFinal(aluno)));
             aluno.adicionaSituacaoFinal(situacao);
@@ -62,7 +70,7 @@ public class Disciplina {
         }
     }
 
-    public SituacaoFinal getSituacaoFinalPeloAluno(Aluno aluno){
+    public SituacaoFinal getSituacaoFinalPeloAluno(Aluno aluno){ //TESTAR
         for(SituacaoFinal situacaoFinal : listaBoletim){
             if(aluno.equals(situacaoFinal.getAluno())){
                 return situacaoFinal;
@@ -72,7 +80,7 @@ public class Disciplina {
     }
 
     @Override
-    public String toString(){
+    public String toString(){ //TESTAR
         String stringAluno = "";
         String string = "=-=-=-=-=-=-=-=" +
                 "\n\nDisciplina: " + nomeDaDisciplina +
@@ -84,10 +92,12 @@ public class Disciplina {
                     "\nCodigo: " + aluno.getCodigo() +
                     "\n\n<<Avaliacoes>>\n\n";
             for(Nota nota : aluno.getListaDeNotas()){
-                stringAluno += "Avaliacao: " + nota.getAvaliacao().getClass().getName() +
-                        "\nNota: " + nota.getNota() +
-                        "\nPeso: " + nota.getAvaliacao().getPeso() +
-                        "\n\n";
+                if(nota.getAvaliacao().getDisciplina().equals(this)) {
+                    stringAluno += "Avaliacao: " + nota.getAvaliacao().getClass().getName() +
+                            "\nNota: " + nota.getNota() +
+                            "\nPeso: " + nota.getAvaliacao().getPeso() +
+                            "\n\n";
+                }
             }
             SituacaoFinal situacaoFinal = this.getSituacaoFinalPeloAluno(aluno);
             stringAluno += "----------" +
@@ -97,5 +107,10 @@ public class Disciplina {
         }
         string += stringAluno;
         return string;
+    }
+
+    @Override
+    public boolean equals(Object o){ //TESTAR
+        return this.codigo == ((Disciplina) o).getCodigo();
     }
 }

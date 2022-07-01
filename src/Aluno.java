@@ -29,7 +29,7 @@ public class Aluno {
         return codigo;
     }
 
-    public void adicionaSituacaoFinal(SituacaoFinal situacaoFinal){
+    public void adicionaSituacaoFinal(SituacaoFinal situacaoFinal){ //TESTAR
         listaSituacaoFinal.add(situacaoFinal);
     }
 
@@ -37,12 +37,12 @@ public class Aluno {
         return listaDeNotas;
     }
 
-    public void adicionaNota(Nota nota){
+    public void adicionaNota(Nota nota){ //TESTAR
         listaDeNotas.add(nota);
     }
 
     @Override
-    public boolean equals(Object o){
+    public boolean equals(Object o){ //TESTAR
         return this.codigo == ((Aluno) o).getCodigo();
     }
 }
