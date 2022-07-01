@@ -3,81 +3,72 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Disciplina matematica = new Disciplina("Matematica", 7.0);
+        List<Aluno> listaDeAlunos1 = new ArrayList<>();
 
         Aluno aluno1 = new Aluno("Vinicius");
         Aluno aluno2 = new Aluno("Mirella");
-
-        List<Avaliacao> listaAluno1 = new ArrayList<>();
-        listaAluno1.add(new Trabalho(8, 2));
-        listaAluno1.add(new Prova(9.5, 4));
-        listaAluno1.add(new Prova(8, 4));
-
-        List<Avaliacao> listaAluno2 = new ArrayList<>();
-        listaAluno2.add(new Trabalho(7, 2));
-        listaAluno2.add(new Prova(6, 4));
-        listaAluno2.add(new Prova(8.5, 4));
-
-        matematica.adicionarAluno(aluno1, listaAluno1);
-        matematica.adicionarAluno(aluno2, listaAluno2);
-
-        //------------------------------------------------------------------------//
-
-        Disciplina fisica = new Disciplina("Fisica", 8.0);
-
-        Aluno aluno3 = new Aluno("Kadu");
+        Aluno aluno3 = new Aluno("Pietro");
         Aluno aluno4 = new Aluno("Helen");
-        Aluno aluno5 = new Aluno("Andresa");
-        Aluno aluno6 = new Aluno("Eudes");
-        Aluno aluno7 = new Aluno("Matheus");
-        Aluno aluno8 = new Aluno("Renan");
+        Aluno aluno5 = new Aluno("Kadu");
 
-        List<Avaliacao> listaAluno3 = new ArrayList<>();
-        listaAluno3.add(new Trabalho(9, 2));
-        listaAluno3.add(new Trabalho(6.7, 2));
-        listaAluno3.add(new Trabalho(8.9, 2));
-        listaAluno3.add(new Prova(5.8, 4));
+        listaDeAlunos1.add(aluno1);
+        listaDeAlunos1.add(aluno2);
+        listaDeAlunos1.add(aluno3);
+        listaDeAlunos1.add(aluno4);
+        listaDeAlunos1.add(aluno5);
 
-        List<Avaliacao> listaAluno4 = new ArrayList<>();
-        listaAluno4.add(new Trabalho(8.8, 2));
-        listaAluno4.add(new Trabalho(9, 2));
-        listaAluno4.add(new Trabalho(6.7, 2));
-        listaAluno4.add(new Prova(9.1, 4));
+        Disciplina disciplina1 = new Disciplina("Matematica", 7.0, listaDeAlunos1);
+        Disciplina disciplina2 = new Disciplina("Arte", 6.0, listaDeAlunos1);
 
-        List<Avaliacao> listaAluno5 = new ArrayList<>();
-        listaAluno5.add(new Trabalho(8.5, 2));
-        listaAluno5.add(new Trabalho(7.8, 2));
-        listaAluno5.add(new Trabalho(9.3, 2));
-        listaAluno5.add(new Prova(10, 4));
+        Avaliacao avaliacao1 = new Trabalho(2, disciplina1);
+        Avaliacao avaliacao2 = new Trabalho(2, disciplina1);
+        Avaliacao avaliacao3 = new Prova(6, disciplina1);
 
-        List<Avaliacao> listaAluno6 = new ArrayList<>();
-        listaAluno6.add(new Trabalho(6.4, 2));
-        listaAluno6.add(new Trabalho(7.6, 2));
-        listaAluno6.add(new Trabalho(8.0, 2));
-        listaAluno6.add(new Prova(9.7, 4));
+        avaliacao1.AdicionarAlunoENota(aluno1, 7.0);
+        avaliacao1.AdicionarAlunoENota(aluno2, 9.4);
+        avaliacao1.AdicionarAlunoENota(aluno3, 6.7);
+        avaliacao1.AdicionarAlunoENota(aluno4, 8.3);
+        avaliacao1.AdicionarAlunoENota(aluno5, 7.5);
 
-        List<Avaliacao> listaAluno7 = new ArrayList<>();
-        listaAluno7.add(new Trabalho(9.8, 2));
-        listaAluno7.add(new Trabalho(4, 2));
-        listaAluno7.add(new Trabalho(2, 2));
-        listaAluno7.add(new Prova(1.5, 4));
+        avaliacao2.AdicionarAlunoENota(aluno1, 9.0);
+        avaliacao2.AdicionarAlunoENota(aluno2, 9.2);
+        avaliacao2.AdicionarAlunoENota(aluno3, 4.0);
+        avaliacao2.AdicionarAlunoENota(aluno4, 5.6);
+        avaliacao2.AdicionarAlunoENota(aluno5, 10.0);
 
-        List<Avaliacao> listaAluno8 = new ArrayList<>();
-        listaAluno8.add(new Trabalho(1.1, 2));
-        listaAluno8.add(new Trabalho(3.4, 2));
-        listaAluno8.add(new Trabalho(5.5, 2));
-        listaAluno8.add(new Prova(6, 4));
+        avaliacao3.AdicionarAlunoENota(aluno1, 2.0);
+        avaliacao3.AdicionarAlunoENota(aluno2, 7.8);
+        avaliacao3.AdicionarAlunoENota(aluno3, 7.2);
+        avaliacao3.AdicionarAlunoENota(aluno4, 9.0);
+        avaliacao3.AdicionarAlunoENota(aluno5, 8.9);
 
-        fisica.adicionarAluno(aluno3, listaAluno3);
-        fisica.adicionarAluno(aluno4, listaAluno4);
-        fisica.adicionarAluno(aluno5, listaAluno5);
-        fisica.adicionarAluno(aluno6, listaAluno6);
-        fisica.adicionarAluno(aluno7, listaAluno7);
-        fisica.adicionarAluno(aluno8, listaAluno8);
+        disciplina1.avaliarAlunos();
 
-        //------------------------------------------------------------------------//
+        Avaliacao avaliacao4 = new Trabalho(2, disciplina2);
+        Avaliacao avaliacao5 = new Prova(4, disciplina2);
+        Avaliacao avaliacao6 = new Prova(4, disciplina2);
 
-        System.out.println(fisica);
-        System.out.println(matematica);
+        avaliacao4.AdicionarAlunoENota(aluno1, 7.0);
+        avaliacao4.AdicionarAlunoENota(aluno2, 10.0);
+        avaliacao4.AdicionarAlunoENota(aluno3, 9.4);
+        avaliacao4.AdicionarAlunoENota(aluno4, 8.3);
+        avaliacao4.AdicionarAlunoENota(aluno5, 6.5);
+
+        avaliacao5.AdicionarAlunoENota(aluno1, 8.9);
+        avaliacao5.AdicionarAlunoENota(aluno2, 9.5);
+        avaliacao5.AdicionarAlunoENota(aluno3, 1.0);
+        avaliacao5.AdicionarAlunoENota(aluno4, 6.0);
+        avaliacao5.AdicionarAlunoENota(aluno5, 5.0);
+
+        avaliacao6.AdicionarAlunoENota(aluno1, 3.0);
+        avaliacao6.AdicionarAlunoENota(aluno2, 8.3);
+        avaliacao6.AdicionarAlunoENota(aluno3, 6.9);
+        avaliacao6.AdicionarAlunoENota(aluno4, 9.5);
+        avaliacao6.AdicionarAlunoENota(aluno5, 10.0);
+
+        disciplina2.avaliarAlunos();
+
+        System.out.println(disciplina1);
+        System.out.println(disciplina2);
     }
 }

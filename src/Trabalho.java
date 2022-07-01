@@ -1,14 +1,6 @@
 public class Trabalho extends Avaliacao{
 
-    public Trabalho(int peso){
-        super(peso);
+    public Trabalho(int peso, Disciplina disciplina){
+        super(peso, disciplina);
     }
-
-    /*@Override
-    public String toString(){
-        return "Avaliação: Trabalho" +
-                "\nNota: " + this.getNota() +
-                "\nPeso: " + this.getPeso() +
-                "\n";
-    }*/
 }

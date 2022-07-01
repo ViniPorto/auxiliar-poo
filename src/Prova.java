@@ -1,14 +1,6 @@
 public class Prova extends Avaliacao{
 
-    public Prova(double nota, int peso){
-        super(peso);
+    public Prova(int peso, Disciplina disciplina){
+        super(peso, disciplina);
     }
-
-    /*@Override
-    public String toString(){
-        return "Avaliação: Prova" +
-                "\nNota: " + this.getNota() +
-                "\nPeso: " + this.getPeso() +
-                "\n";
-    }*/
 }

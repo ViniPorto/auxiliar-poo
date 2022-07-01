@@ -1,16 +1,21 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class Disciplina {
     private String nomeDaDisciplina;
     private double notaDeCorte;
-    private List<Avaliacao> listaDeAvaliacoes;
-    private List<SituacaoFinal> listaBoletim;
+    private List<Avaliacao> listaDeAvaliacoes = new ArrayList<>();
+    private List<SituacaoFinal> listaBoletim = new ArrayList<>();
+    private List<Aluno> listaDeAlunos = new ArrayList<>();
 
-    public Disciplina(String nomeDaDisciplina, double notaDeCorte){
+    public Disciplina(String nomeDaDisciplina, double notaDeCorte, List<Aluno> listaDeAlunos){
         this.nomeDaDisciplina = nomeDaDisciplina;
         this.notaDeCorte = notaDeCorte;
+        this.listaDeAlunos.addAll(listaDeAlunos);
+    }
+
+    public List<Aluno> getListaDeAlunos(){
+        return listaDeAlunos;
     }
 
     public String getNomeDaDisciplina() {
@@ -33,40 +38,64 @@ public class Disciplina {
         listaDeAvaliacoes.add(avaliacao);
     }
 
-    public static double getNotaFinal(List<Avaliacao> listaDeAvaliacoes){
+    public double getNotaFinal(Aluno aluno){
         double somatorioNotaVezesPeso = 0, somatorioPesos = 0;
-        for(Avaliacao avaliacao : listaDeAvaliacoes){
-            somatorioPesos += avaliacao.getPeso();
-            somatorioNotaVezesPeso += avaliacao.getPeso() * avaliacao.getNota();
+        for(Nota nota : aluno.getListaDeNotas()){
+            somatorioNotaVezesPeso += (nota.getNota() * nota.getAvaliacao().getPeso());
+            somatorioPesos += nota.getAvaliacao().getPeso();
         }
         return ((somatorioNotaVezesPeso / somatorioPesos) * 10.0) / 10.0;
     }
 
-    public void situacaoBoletim(){
-        for(Avaliacao avaliacao : listaDeAvaliacoes){
-
+    public String situacaoAluno(double notaFinal){
+        if(notaFinal >= notaDeCorte){
+            return "Aprovado";
         }
+        return "Reprovado";
+    }
+
+    public void avaliarAlunos(){
+        for(Aluno aluno : listaDeAlunos){
+            SituacaoFinal situacao = new SituacaoFinal(aluno.getListaDeNotas(), this.getNotaFinal(aluno), this.situacaoAluno(this.getNotaFinal(aluno)));
+            aluno.adicionaSituacaoFinal(situacao);
+            listaBoletim.add(situacao);
+        }
+    }
+
+    public SituacaoFinal getSituacaoFinalPeloAluno(Aluno aluno){
+        for(SituacaoFinal situacaoFinal : listaBoletim){
+            if(aluno.equals(situacaoFinal.getAluno())){
+                return situacaoFinal;
+            }
+        }
+        return new SituacaoFinal(null, 0.0, null);
     }
 
     @Override
     public String toString(){
-        String string = "Disciplina -> " + this.nomeDaDisciplina +
-                "\nNota de corte -> " + this.notaDeCorte +
-                "\n\n=-=-=-=-=-=-=-=-=-=-=-=\n\n";
-        for(Aluno aluno : listaDeAlunos.keySet()){
-            String listaEmString = "";
-            for(Avaliacao avaliacao : listaDeAlunos.get(aluno)){
-                listaEmString += "Avaliacao -> " + avaliacao.getClass().getName() +
-                        "\nNota -> " + avaliacao.getNota() +
-                        "\nPeso -> " + avaliacao.getPeso() +
+        String stringAluno = "";
+        String string = "=-=-=-=-=-=-=-=" +
+                "\n\nDisciplina: " + nomeDaDisciplina +
+                "\nNota de corte: " + notaDeCorte +
+                "\n\n";
+        for(Aluno aluno : listaDeAlunos){
+            stringAluno += "==========" +
+                    "\n\nNome do aluno: " + aluno.getNome() +
+                    "\nCodigo: " + aluno.getCodigo() +
+                    "\n\n<<Avaliacoes>>\n\n";
+            for(Nota nota : aluno.getListaDeNotas()){
+                stringAluno += "Avaliacao: " + nota.getAvaliacao().getClass().getName() +
+                        "\nNota: " + nota.getNota() +
+                        "\nPeso: " + nota.getAvaliacao().getPeso() +
                         "\n\n";
             }
-            string += "Aluno -> " + aluno.getNome() +
-                    "\nNotas:\n\n" + listaEmString +
-                    "Nota final: " + getNotaFinal(listaDeAlunos.get(aluno)) +
-                    "\nSituacao: " + this.situacaoBoletim(getNotaFinal(listaDeAlunos.get(aluno))) +
-                    "\n\n=-=-=-=-=-=-=-=-=-=-=-=\n\n";
+            SituacaoFinal situacaoFinal = this.getSituacaoFinalPeloAluno(aluno);
+            stringAluno += "----------" +
+                    "\nNota final: " + situacaoFinal.getNotaFinal() +
+                    "\nSituacao: " + situacaoFinal.getSituacao() +
+                    "\n\n";
         }
+        string += stringAluno;
         return string;
     }
 }

@@ -1,8 +1,12 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Aluno {
     private String nome;
     private static int totalDeAlunos = 0;
     private int codigo;
-
+    private List<Nota> listaDeNotas = new ArrayList<>();
+    private List<SituacaoFinal> listaSituacaoFinal = new ArrayList<>();
     public Aluno(String nome){
         this.nome = nome;
         totalDeAlunos++;
@@ -25,9 +29,16 @@ public class Aluno {
         return codigo;
     }
 
-    @Override
-    public String toString(){
-        return "Nome: " + this.nome;
+    public void adicionaSituacaoFinal(SituacaoFinal situacaoFinal){
+        listaSituacaoFinal.add(situacaoFinal);
+    }
+
+    public List<Nota> getListaDeNotas(){
+        return listaDeNotas;
+    }
+
+    public void adicionaNota(Nota nota){
+        listaDeNotas.add(nota);
     }
 
     @Override

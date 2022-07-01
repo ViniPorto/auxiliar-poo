@@ -1,24 +1,23 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class SituacaoFinal {
-    private Aluno aluno;
+    private List<Nota> listaDeNotas = new ArrayList<>();
     private double notaFinal;
     private String situacao;
-    private List<Nota> listaDeNotas;
+    private Aluno aluno;
+    private Disciplina disciplina;
 
-    public SituacaoFinal(Aluno aluno, double notaFinal, String situacao, List<Nota> listaDeNotas){
-        this.aluno = aluno;
+    public SituacaoFinal(List<Nota> listaDenotas, double notaFinal, String situacao){
+        this.listaDeNotas.addAll(listaDenotas);
         this.notaFinal = notaFinal;
         this.situacao = situacao;
-        this.listaDeNotas = listaDeNotas;
+        this.aluno = listaDenotas.get(0).getAluno();
+        this.disciplina = listaDenotas.get(0).getAvaliacao().getDisciplina();
     }
 
-    public Aluno getAluno() {
-        return aluno;
-    }
-
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
+    public List<Nota> getListaDeNotas() {
+        return listaDeNotas;
     }
 
     public double getNotaFinal() {
@@ -37,11 +36,19 @@ public class SituacaoFinal {
         this.situacao = situacao;
     }
 
-    public List<Nota> getListaDeAvaliacoes() {
-        return listaDeNotas;
+    public Aluno getAluno() {
+        return aluno;
     }
 
-    public void setListaDeAvaliacoes(List<Nota> listaDeAvaliacoes) {
-        this.listaDeNotas = listaDeAvaliacoes;
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
+
+    public Disciplina getDisciplina() {
+        return disciplina;
+    }
+
+    public void setDisciplina(Disciplina disciplina) {
+        this.disciplina = disciplina;
     }
 }
