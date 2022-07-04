@@ -29,7 +29,7 @@ public class Nota {
         return nota;
     }
 
-    public void setNota(int nota) {
+    public void setNota(double nota) {
         this.nota = nota;
     }
 }
