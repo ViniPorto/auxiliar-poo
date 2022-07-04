@@ -24,23 +24,23 @@ public class Main {
         Avaliacao avaliacao2 = new Trabalho(2, disciplina1);
         Avaliacao avaliacao3 = new Prova(6, disciplina1);
 
-        avaliacao1.AdicionarAlunoENota(aluno1, 7.0);
-        avaliacao1.AdicionarAlunoENota(aluno2, 9.4);
-        avaliacao1.AdicionarAlunoENota(aluno3, 6.7);
-        avaliacao1.AdicionarAlunoENota(aluno4, 8.3);
-        avaliacao1.AdicionarAlunoENota(aluno5, 7.5);
+        avaliacao1.adicionarAlunoENota(aluno1, 7.0);
+        avaliacao1.adicionarAlunoENota(aluno2, 9.4);
+        avaliacao1.adicionarAlunoENota(aluno3, 6.7);
+        avaliacao1.adicionarAlunoENota(aluno4, 8.3);
+        avaliacao1.adicionarAlunoENota(aluno5, 7.5);
 
-        avaliacao2.AdicionarAlunoENota(aluno1, 9.0);
-        avaliacao2.AdicionarAlunoENota(aluno2, 9.2);
-        avaliacao2.AdicionarAlunoENota(aluno3, 4.0);
-        avaliacao2.AdicionarAlunoENota(aluno4, 5.6);
-        avaliacao2.AdicionarAlunoENota(aluno5, 10.0);
+        avaliacao2.adicionarAlunoENota(aluno1, 9.0);
+        avaliacao2.adicionarAlunoENota(aluno2, 9.2);
+        avaliacao2.adicionarAlunoENota(aluno3, 4.0);
+        avaliacao2.adicionarAlunoENota(aluno4, 5.6);
+        avaliacao2.adicionarAlunoENota(aluno5, 10.0);
 
-        avaliacao3.AdicionarAlunoENota(aluno1, 2.0);
-        avaliacao3.AdicionarAlunoENota(aluno2, 7.8);
-        avaliacao3.AdicionarAlunoENota(aluno3, 7.2);
-        avaliacao3.AdicionarAlunoENota(aluno4, 9.0);
-        avaliacao3.AdicionarAlunoENota(aluno5, 8.9);
+        avaliacao3.adicionarAlunoENota(aluno1, 2.0);
+        avaliacao3.adicionarAlunoENota(aluno2, 7.8);
+        avaliacao3.adicionarAlunoENota(aluno3, 7.2);
+        avaliacao3.adicionarAlunoENota(aluno4, 9.0);
+        avaliacao3.adicionarAlunoENota(aluno5, 8.9);
 
         disciplina1.avaliarAlunos();
 
@@ -48,23 +48,23 @@ public class Main {
         Avaliacao avaliacao5 = new Prova(4, disciplina2);
         Avaliacao avaliacao6 = new Prova(4, disciplina2);
 
-        avaliacao4.AdicionarAlunoENota(aluno1, 7.0);
-        avaliacao4.AdicionarAlunoENota(aluno2, 10.0);
-        avaliacao4.AdicionarAlunoENota(aluno3, 9.4);
-        avaliacao4.AdicionarAlunoENota(aluno4, 8.3);
-        avaliacao4.AdicionarAlunoENota(aluno5, 6.5);
+        avaliacao4.adicionarAlunoENota(aluno1, 7.0);
+        avaliacao4.adicionarAlunoENota(aluno2, 10.0);
+        avaliacao4.adicionarAlunoENota(aluno3, 9.4);
+        avaliacao4.adicionarAlunoENota(aluno4, 8.3);
+        avaliacao4.adicionarAlunoENota(aluno5, 6.5);
 
-        avaliacao5.AdicionarAlunoENota(aluno1, 8.9);
-        avaliacao5.AdicionarAlunoENota(aluno2, 9.5);
-        avaliacao5.AdicionarAlunoENota(aluno3, 1.0);
-        avaliacao5.AdicionarAlunoENota(aluno4, 6.0);
-        avaliacao5.AdicionarAlunoENota(aluno5, 5.0);
+        avaliacao5.adicionarAlunoENota(aluno1, 8.9);
+        avaliacao5.adicionarAlunoENota(aluno2, 9.5);
+        avaliacao5.adicionarAlunoENota(aluno3, 1.0);
+        avaliacao5.adicionarAlunoENota(aluno4, 6.0);
+        avaliacao5.adicionarAlunoENota(aluno5, 5.0);
 
-        avaliacao6.AdicionarAlunoENota(aluno1, 3.0);
-        avaliacao6.AdicionarAlunoENota(aluno2, 8.3);
-        avaliacao6.AdicionarAlunoENota(aluno3, 6.9);
-        avaliacao6.AdicionarAlunoENota(aluno4, 9.5);
-        avaliacao6.AdicionarAlunoENota(aluno5, 10.0);
+        avaliacao6.adicionarAlunoENota(aluno1, 3.0);
+        avaliacao6.adicionarAlunoENota(aluno2, 8.3);
+        avaliacao6.adicionarAlunoENota(aluno3, 6.9);
+        avaliacao6.adicionarAlunoENota(aluno4, 9.5);
+        avaliacao6.adicionarAlunoENota(aluno5, 10.0);
 
         disciplina2.avaliarAlunos();
 

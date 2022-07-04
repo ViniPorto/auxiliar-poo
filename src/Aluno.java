@@ -29,20 +29,24 @@ public class Aluno {
         return codigo;
     }
 
-    public void adicionaSituacaoFinal(SituacaoFinal situacaoFinal){ //TESTAR
+    public void adicionaSituacaoFinal(SituacaoFinal situacaoFinal){
         listaSituacaoFinal.add(situacaoFinal);
+    }
+
+    public List<SituacaoFinal> getListaSituacaoFinal(){
+        return listaSituacaoFinal;
     }
 
     public List<Nota> getListaDeNotas(){
         return listaDeNotas;
     }
 
-    public void adicionaNota(Nota nota){ //TESTAR
+    public void adicionaNota(Nota nota){
         listaDeNotas.add(nota);
     }
 
     @Override
-    public boolean equals(Object o){ //TESTAR
+    public boolean equals(Object o){
         return this.codigo == ((Aluno) o).getCodigo();
     }
 }

@@ -18,6 +18,10 @@ public class Disciplina {
         this.codigo = totalDeDisciplinas;
     }
 
+    public List<SituacaoFinal> getListaBoletim(){
+        return listaBoletim;
+    }
+
     public List<Aluno> getListaDeAlunos(){
         return listaDeAlunos;
     }
@@ -42,11 +46,11 @@ public class Disciplina {
         return codigo;
     }
 
-    public void adicionarAvaliacao(Avaliacao avaliacao){ //TESTAR
+    public void adicionarAvaliacao(Avaliacao avaliacao){
         listaDeAvaliacoes.add(avaliacao);
     }
 
-    public double getNotaFinal(Aluno aluno){ //TESTAR
+    public double getNotaFinal(Aluno aluno){
         double somatorioNotaVezesPeso = 0, somatorioPesos = 0;
         for(Nota nota : aluno.getListaDeNotas()){
             somatorioNotaVezesPeso += (nota.getNota() * nota.getAvaliacao().getPeso());
@@ -55,14 +59,14 @@ public class Disciplina {
         return ((somatorioNotaVezesPeso / somatorioPesos) * 10.0) / 10.0;
     }
 
-    public String situacaoAluno(double notaFinal){ //TESTAR
+    public String situacaoAluno(double notaFinal){
         if(notaFinal >= notaDeCorte){
             return "Aprovado";
         }
         return "Reprovado";
     }
 
-    public void avaliarAlunos(){ //TESTAR
+    public void avaliarAlunos(){
         for(Aluno aluno : listaDeAlunos){
             SituacaoFinal situacao = new SituacaoFinal(aluno.getListaDeNotas(), this.getNotaFinal(aluno), this.situacaoAluno(this.getNotaFinal(aluno)));
             aluno.adicionaSituacaoFinal(situacao);
@@ -70,7 +74,7 @@ public class Disciplina {
         }
     }
 
-    public SituacaoFinal getSituacaoFinalPeloAluno(Aluno aluno){ //TESTAR
+    public SituacaoFinal getSituacaoFinalPeloAluno(Aluno aluno){
         for(SituacaoFinal situacaoFinal : listaBoletim){
             if(aluno.equals(situacaoFinal.getAluno())){
                 return situacaoFinal;
@@ -80,7 +84,7 @@ public class Disciplina {
     }
 
     @Override
-    public String toString(){ //TESTAR
+    public String toString(){
         String stringAluno = "";
         String string = "=-=-=-=-=-=-=-=" +
                 "\n\nDisciplina: " + nomeDaDisciplina +
@@ -110,7 +114,7 @@ public class Disciplina {
     }
 
     @Override
-    public boolean equals(Object o){ //TESTAR
+    public boolean equals(Object o){
         return this.codigo == ((Disciplina) o).getCodigo();
     }
 }
